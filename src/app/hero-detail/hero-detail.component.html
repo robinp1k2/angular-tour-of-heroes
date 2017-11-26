@@ -1,0 +1,15 @@
+<!-- "If" directive used in a div which will only display if true 
+  (property is set).  -->
+<!-- Two-way binding of component property "name" using ngModule in 
+  Banana box -->
+<div *ngIf="myHero">
+    <h2>{{ myHero.name | uppercase }} Details</h2>
+    <div><span>id: </span>{{myHero.id}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="myHero.name" placeholder="<name>">
+      </label>
+    </div>
+    <button (click)="goBack()">go back</button>
+    <button (click)="save()">save</button>
+  </div>

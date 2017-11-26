@@ -1,0 +1,39 @@
+<h2>My Heroes</h2>
+<div>
+  <label>Hero name:
+    <input #heroName placeholder="<new hero name>">
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(heroName.value); heroName.value=''">
+    add
+  </button>
+</div>
+<!--  New:  wrap the badge and name in an anchor element (<a>), and 
+  add a routerLink attribute to the anchor that is the same as 
+  in the dashboard template -->
+<ul class="heroes">
+    <li *ngFor="let aHero of heroes">
+      <a routerLink="/detail/{{aHero.id}}">
+        <span class="badge">{{aHero.id}}</span> {{aHero.name}}
+      </a>
+      <button class="delete" title="delete hero"
+      (click)="delete(aHero)">x</button>
+    </li>
+  </ul>
+
+<!-- Original hero list:
+  "onclick" tag event binding to component method "onSelect"
+  class binding of ".selected" when conditional is true -->
+<!-- <ul class="heroes">
+  <li *ngFor="let aHero of heroes"
+    (click)="onSelect(aHero)" 
+    [class.selected]="aHero === selectedHero">
+    <span class="badge">{{aHero.id}}</span> {{aHero.name}}
+  </li>
+</ul> -->
+
+<!-- old (before routing added) display the details below the list when a user
+  selects a hero:
+  Bind the HeroesComponent.selectedHero to the element's hero
+  [hero]="selectedHero" is an Angular property binding. -->
+<!-- <app-hero-detail [myHero]="selectedHero"></app-hero-detail> -->
