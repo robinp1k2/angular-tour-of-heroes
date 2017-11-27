@@ -216,4 +216,20 @@ export class HeroService {
   // - you don't send data as you did with put and post.
   // - you still send the httpOptions.
 
+  /* GET heroes whose name contains search term */
+  searchHeroes(term: string): Observable<Hero[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    //return this.http.get<Hero[]>(`api/heroes/?name=${term}`).pipe(
+    return this.http.get<Hero[]>(this.heroesUrl + `/?name=${term}`).pipe(
+      tap(_ => this.log(`found heroes matching "${term}"`)),
+      catchError(this.handleError<Hero[]>('searchHeroes', []))
+    );
+    //The method returns immediately with an empty array if there is 
+    //no search term. The rest of it closely resembles getHeroes(). 
+    //The only significant difference is the URL, which includes a 
+    //query string with the search term.
+  }
 }

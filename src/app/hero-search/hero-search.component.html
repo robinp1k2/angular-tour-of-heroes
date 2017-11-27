@@ -1,0 +1,29 @@
+<div id="search-component">
+  <h4>Hero Search</h4>
+
+  <!-- As the user types in the search box, a keyup event binding calls 
+    the component's search() method with the new search box value. -->
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <!-- 
+    Every time the user types in the textbox, the binding calls search() 
+    with the textbox value, a "search term". 
+    The searchTerms becomes an Observable emitting a steady stream of search terms.
+   -->
+
+  <!-- 
+    Look closely and you'll see that the *ngFor iterates over a list 
+    called heroes$, not heroes. 
+    The $ is a convention that indicates heroes$ is an Observable, not an array.
+    The *ngFor can't do anything with an Observable. But there's also a pipe 
+    character (|) followed by async, which identifies Angular's AsyncPipe.
+    The async pipe subscribes to an Observable or Promise and returns 
+    the latest value it has emitted. 
+  -->
+  <ul class="search-result">
+    <li *ngFor="let hero of heroes$ | async" >
+      <a routerLink="/detail/{{hero.id}}">
+        {{hero.name}}
+      </a>
+    </li>
+  </ul>
+</div>

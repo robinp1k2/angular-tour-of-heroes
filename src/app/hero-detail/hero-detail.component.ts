@@ -15,6 +15,8 @@ import { HeroService }  from '../hero.service';
 export class HeroDetailComponent implements OnInit {
 
   //Add the hero property, preceded by the @Input() decorator
+  //The HeroDetailComponent template binds to the component's 
+  //hero property which is of type Hero
   @Input() myHero: Hero;
 
   //Inject the ActivatedRoute, HeroService, and Location services 

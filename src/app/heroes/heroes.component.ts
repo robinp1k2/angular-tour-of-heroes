@@ -1,3 +1,4 @@
+//ng generate component heroes
 import { Component, OnInit } from '@angular/core';
 
 import { Hero } from '../hero' //the data model
@@ -13,7 +14,7 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[]; //component property
 
   //old (was used when hero details component was inside the list component)
-  selectedHero: Hero; //component property
+  //selectedHero: Hero; //component property
  
   //The private heroService parameter simultaneously defines a private 
   //heroService property and identifies it as a HeroService injection site.
